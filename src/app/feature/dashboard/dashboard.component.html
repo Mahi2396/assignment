@@ -1,0 +1,87 @@
+<div class="dashboard-wrapper container">
+  <h4 class="page-title p-2 font-weight-bold">SpaceX Launch Programs</h4>
+  <section class="dashboard-detail-container row">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+      <div class="sp-filter-section p-3">
+        <div class="filter-title font-weight-bold">Filter</div>
+        <div
+          class="filter-options"
+          *ngFor="let filter of filterOptionList; let inx = index"
+        >
+          <div class="filter-type text-center font-weight-bold p-1">{{ filter.title }}</div>
+          <div class="divider mb-2"></div>
+          <app-filters
+            [list]="filter.list"
+            (itemClick)="onFilterClick($event, filter.filterType)"
+          ></app-filters>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+      <div class="row align-items-stretch">
+        <ng-container *ngIf="launchesListResponse?.length; else noDataBlock">
+          <div
+            class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pl-0 mb-2"
+            *ngFor="let item of launchesListResponse"
+          >
+            <div
+              class="item-detail-wrapper sp-list-section p-2"
+              [title]="item.mission_name"
+            >
+              <div class="sp-item-avtar">
+                <img class="img-fluid" [src]="item.links.mission_patch_small" />
+              </div>
+              <div class="sp-item-detail">
+                <div class="sp-title text-primary font-weight-bold">
+                  {{ item.mission_name }} #{{ item.flight_number }}
+                </div>
+                <div class="sp-mission-ids">
+                  <span class="sp-title font-weight-bold"
+                    >Missoon Ids:&nbsp;</span
+                  >
+                  <ul class="mb-1">
+                    <li
+                      *ngFor="let mission of item.mission_id"
+                      class="text-secondary"
+                    >
+                      {{ mission }}
+                    </li>
+                  </ul>
+                </div>
+                <div class="sp-launch-year">
+                  <span class="sp-title font-weight-bold"
+                    >Launch Year:&nbsp;</span
+                  >
+                  <span class="sp-value text-secondary">{{
+                    item.launch_year
+                  }}</span>
+                </div>
+                <div class="sp-success-launch">
+                  <span class="sp-title font-weight-bold"
+                    >Successful Launch:&nbsp;</span
+                  >
+                  <span class="sp-value text-secondary">{{
+                    item.launch_success
+                  }}</span>
+                </div>
+                <div class="sp-success-landing">
+                  <span class="sp-title font-weight-bold"
+                    >Successful Landing:&nbsp;</span
+                  >
+                  <span class="sp-value text-secondary">{{
+                    item.launch_landing
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noDataBlock>
+          <div class="alert alert-danger w-100">No Record found</div>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-loader [isLoaderToBeShown]="isLoader"></app-loader>
