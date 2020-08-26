@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod && ng run test-sapient:server:production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -15,6 +15,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~9.1.4",
+    "@angular/compiler-cli": "~9.1.4",
     "@angular/animations": "~9.1.4",
     "@angular/common": "~9.1.4",
     "@angular/compiler": "~9.1.4",
