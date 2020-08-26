@@ -1,10 +1,11 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { FilterModel } from './dashboard.model';
 
 @Injectable()
 export class DashboardService {
-  private BASE_URL = "https://api.spaceXdata.com/v3/launches?limit=100";
+  private BASE_URL = 'https://api.spaceXdata.com/v3/launches?limit=100';
 
   constructor(private http: HttpClient) {}
 
@@ -12,16 +13,16 @@ export class DashboardService {
     return this.http.get(this.BASE_URL);
   }
 
-  public getAllLaunchesRecords(filterModal): Observable<any> {
+  public getAllLaunchesRecords(filterModal: FilterModel): Observable<any> {
     return this.http.get(
       this.BASE_URL +
         (filterModal.lSuccess !== null
-          ? "&launch_success=" + filterModal.lSuccess
-          : "") +
+          ? '&launch_success=' + filterModal.lSuccess
+          : '') +
         (filterModal.lLanding !== null
-          ? "&land_success=" + filterModal.lLanding
-          : "") +
-        (filterModal.year ? "&launch_year=" + filterModal.year : "")
+          ? '&land_success=' + filterModal.lLanding
+          : '') +
+        (filterModal.year ? '&launch_year=' + filterModal.year : '')
     );
   }
 }

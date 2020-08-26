@@ -12,6 +12,8 @@ export class FiltersComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  /** Fire event on filter options click to emit the selected value */
   public onFilterClick(item) {
     this.isSelectedItem = item;
     this.itemClick.emit(item);

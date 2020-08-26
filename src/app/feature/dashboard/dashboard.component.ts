@@ -1,23 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-import { DashboardService } from "./dashboard.service";
-import { HttpErrorResponse } from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { DashboardService } from './dashboard.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { FilterModel, FilterOptionsModal } from './dashboard.model';
 
 @Component({
-  selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.scss"],
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  /** Hold loader status if true show loader */
   public isLoader = false;
-  public filterModel = {
+  /** Hold selected Filter options */
+  public filterModel: FilterModel = {
     year: null,
     lSuccess: null,
     lLanding: null,
   };
-  public filterOptionList = [
+  /** Hold Right side type of filter option response */
+  public filterOptionList: FilterOptionsModal[] = [
     {
-      filterType: "year",
-      title: "Launch Year",
+      filterType: 'year',
+      title: 'Launch Year',
       list: [
         2006,
         2007,
@@ -37,17 +41,18 @@ export class DashboardComponent implements OnInit {
       ],
     },
     {
-      filterType: "s_launch",
-      title: "Successful Launch",
+      filterType: 's_launch',
+      title: 'Successful Launch',
       list: [true, false],
     },
     {
-      filterType: "s_landing",
-      title: "Successful Landing",
+      filterType: 's_landing',
+      title: 'Successful Landing',
       list: [true, false],
     },
   ];
 
+  /** Hold Launcher response list */
   public launchesListResponse = [];
   constructor(private _dashboardService: DashboardService) {}
 
@@ -55,6 +60,7 @@ export class DashboardComponent implements OnInit {
     this.getLaunchesList();
   }
 
+  /** Get the All launcher list*/
   private getLaunchesList() {
     this.isLoader = true;
     this._dashboardService.getLaunchesList().subscribe(
@@ -70,26 +76,28 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  public onFilterClick(selectedItem, type) {
+  /** fire evnt on filter option click  & set selected item to the match type filterModel*/
+  public onFilterClick(selectedItem: any, type: string) {
     switch (type) {
-      case "year":
-        this.filterModel["year"] = selectedItem;
+      case 'year':
+        this.filterModel['year'] = selectedItem;
         break;
-      case "s_launch":
-        this.filterModel["lSuccess"] = selectedItem;
+      case 's_launch':
+        this.filterModel['lSuccess'] = selectedItem;
         break;
-      case "s_landing":
-        this.filterModel["lLanding"] = selectedItem;
+      case 's_landing':
+        this.filterModel['lLanding'] = selectedItem;
         break;
     }
     this.filterLaunchList();
-    console.log(this.filterModel);
   }
 
+  /** To get Launcher list using filter options  */
   private filterLaunchList() {
     this.getAllFilterModelResult();
   }
 
+  /** Call launcher serview to get the list */
   private getAllFilterModelResult() {
     this.isLoader = true;
     this._dashboardService.getAllLaunchesRecords(this.filterModel).subscribe(
