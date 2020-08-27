@@ -5,13 +5,17 @@
     "ng": "ng",
     "start": "node server.js",
     "build:ssr": "ng build --prod && ng run test-sapient:server:production --bundleDependencies all",
-    "build": "npm run build:ssr",
+    "build": "ng build --prod && ng run test-sapient:server:production --bundleDependencies all",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run test-sapient:serve-ssr",
     "serve:ssr": "node dist/test-sapient/server/main.js",
     "prerender": "ng run test-sapient:prerender"
+  },
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.4.1"
   },
   "private": true,
   "dependencies": {
