@@ -4,13 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "build:ssr": "ng build --prod && ng run test-sapient:server:production --bundleDependencies all",
     "build": "npm run build:ssr",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run test-sapient:serve-ssr",
     "serve:ssr": "node dist/test-sapient/server/main.js",
-    "build:ssr": "ng build --prod && ng run test-sapient:server:production --bundleDependencies all",
     "prerender": "ng run test-sapient:prerender"
   },
   "private": true,
