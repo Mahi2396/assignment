@@ -1,10 +1,11 @@
-.sp-filter-option-list
-.item{
-  border-radius: 5px;;
-  background: #85ca59;
+$active: #60e30b;
+$background: #85ca59;
+.sp-filter-option-list .item {
+  border-radius: 5px;
+  background: $background;
   cursor: pointer;
   max-width: 100px;
-  &.active{
-    background: #4eb40c;
+  &.active {
+    background: $active;
   }
 }

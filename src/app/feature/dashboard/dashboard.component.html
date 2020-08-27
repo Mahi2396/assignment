@@ -1,14 +1,16 @@
 <div class="dashboard-wrapper container">
   <h4 class="page-title p-2 font-weight-bold">SpaceX Launch Programs</h4>
   <section class="dashboard-detail-container row">
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-2">
       <div class="sp-filter-section p-3">
         <div class="filter-title font-weight-bold">Filter</div>
         <div
           class="filter-options"
           *ngFor="let filter of filterOptionList; let inx = index"
         >
-          <div class="filter-type text-center font-weight-bold p-1">{{ filter.title }}</div>
+          <div class="filter-type text-center font-weight-bold p-1">
+            {{ filter.title }}
+          </div>
           <div class="divider mb-2"></div>
           <app-filters
             [list]="filter.list"
@@ -28,8 +30,15 @@
               class="item-detail-wrapper sp-list-section p-2"
               [title]="item.mission_name"
             >
-              <div class="sp-item-avtar">
-                <img class="img-fluid" [src]="item.links.mission_patch_small" />
+              <div class="sp-item-avtar text-center">
+                <img
+                  class="img-fluid"
+                  [src]="
+                    item.links.mission_patch_small
+                      ? item.links.mission_patch_small
+                      : './assets/images/default.png'
+                  "
+                />
               </div>
               <div class="sp-item-detail">
                 <div class="sp-title text-primary font-weight-bold">
@@ -41,7 +50,7 @@
                   >
                   <ul class="mb-1">
                     <li
-                      *ngFor="let mission of item.mission_id"
+                      *ngFor="let mission of item?.mission_id"
                       class="text-secondary"
                     >
                       {{ mission }}
