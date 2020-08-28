@@ -1,7 +1,7 @@
 <div class="sp-filter-option-list row no-gutters">
   <ng-container *ngFor="let item of list">
     <span class="col-6 mb-2">
-      <div class="item p-1 text-center" [ngClass]="{'active': isSelectedItem== item || }" (click)="onFilterClick(item)">
+      <div class="item p-1 text-center" [ngClass]="{'active': isSelectedItem== item }" (click)="onFilterClick(item)">
         {{ item }}
       </div>
     </span>
