@@ -33,4 +33,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   5) Test cases
   6) Code Covarage 
   7) Reuable componets
-  8) Heroku pipeline for deployment
+  8) Heroku pipeline to deployment
