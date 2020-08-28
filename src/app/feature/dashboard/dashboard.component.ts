@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { DashboardService } from "./dashboard.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { FilterModel, FilterOptionsModal } from "./dashboard.model";
-import { FiltersComponent } from 'src/app/shared/component/filters/filters.component';
 
 @Component({
   selector: "app-dashboard",
@@ -19,7 +18,6 @@ export class DashboardComponent implements OnInit {
     lLanding: null,
   };
   public selectedItem: any;
-  @ViewChild('filter') filter: FiltersComponent;
   /** Hold Right side type of filter option response */
   public filterOptionList: FilterOptionsModal[] = [
     {
@@ -121,13 +119,5 @@ export class DashboardComponent implements OnInit {
         this.isLoader = false;
       }
     );
-  }
-
-  public clearFilter() {
-    Object.keys(this.filterModel).map((key) => {
-      this.filterModel[key] = null;
-    });
-    this.selectedItem = null;
-    this.filter.onFilterClick(null);
   }
 }

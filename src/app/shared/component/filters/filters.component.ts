@@ -7,7 +7,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FiltersComponent implements OnInit {
   @Input() list = [];
-  @Input() resetSelected: any;
   public isSelectedItem: any;
   @Output() public itemClick = new EventEmitter();
   constructor() {}
