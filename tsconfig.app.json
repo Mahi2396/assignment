@@ -28,6 +28,6 @@
     "src/**/testing"
   ],
   "angularCompilerOptions": {
-    "enableIvy": false
+    "enableIvy": true
   }
 }
