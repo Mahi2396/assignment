@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FilterModel, FilterOptionsModal } from './dashboard.model';
@@ -23,7 +18,7 @@ export class DashboardComponent implements OnInit {
     lSuccess: null,
     lLanding: null,
   };
-  public clearButton=false;
+  public clearButton = false;
   /** Hold Right side type of filter option response */
   public filterOptionList: FilterOptionsModal[] = [
     {
@@ -102,7 +97,7 @@ export class DashboardComponent implements OnInit {
       }
       this.filterLaunchList();
     } else {
-      Object.keys(this.filterModel).map(key =>{
+      Object.keys(this.filterModel).map((key) => {
         this.filterModel[key] = null;
       });
       this.getLaunchesList();
@@ -135,7 +130,8 @@ export class DashboardComponent implements OnInit {
   public clearFilter() {
     this.clearButton = false;
     this.filter.toArray().map((component) => {
-      component.onFilterClick(null);
+      component.resetClass();
     });
+    this.onFilterClick(null, null);
   }
 }
