@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "node server.js",
     "build:ssr": "ng build --prod && ng run test-sapient:server:production",
-    "build": "ng build --prod && ng run test-sapient:server:production",
+    "build": "ng build --prod && ng run test-sapient:server:production all",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
