@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build:ssr": "ng build --prod && ng run test-sapient:server:production --bundleDependencies all",
-    "build": "ng build --prod && ng run test-sapient:server:production --bundleDependencies all",
+    "build:ssr": "ng build --prod && ng run test-sapient:server:production",
+    "build": "ng build --prod && ng run test-sapient:server:production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
