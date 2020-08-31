@@ -17,6 +17,9 @@
             (itemClick)="onFilterClick($event, filter.filterType)"
           ></app-filters>
         </div>
+        <div class="clear-filter mt-2 clearfix" *ngIf="clearButton">
+          <button class="btn btn-link float-right" (click)="clearFilter()">Clear Filter</button>
+        </div>
       </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
