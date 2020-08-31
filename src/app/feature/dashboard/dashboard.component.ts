@@ -102,6 +102,9 @@ export class DashboardComponent implements OnInit {
       }
       this.filterLaunchList();
     } else {
+      Object.keys(this.filterModel).map(key =>{
+        this.filterModel[key] = null;
+      });
       this.getLaunchesList();
     }
   }
